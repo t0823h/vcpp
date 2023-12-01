@@ -122,6 +122,125 @@ void DrawBonobono(HWND hWnd, HDC hdc, int blink) {
 
 }
 
+void DrawBonobonoother(HWND hWnd, HDC hdc, int blink) {
+
+	RECT viewRect;
+	GetClientRect(hWnd, &viewRect);
+	int centerX = (viewRect.left + viewRect.right) / 2;
+	int centerY = (viewRect.top + viewRect.bottom) / 2;
+
+	// 파란색 원 그리기
+	HBRUSH hBlueBrush = CreateSolidBrush(RGB(127, 200, 255));
+	SelectObject(hdc, hBlueBrush);
+	int radius = 100; // 원의 반지름
+	Ellipse(hdc, centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+	DeleteObject(hBlueBrush);
+
+	// 왼쪽 눈1(직선)
+	int startX5 = 323; // 흰색 코의 중심 X 좌표
+	int startY5 = 204; // 흰색 코의 중심 Y 좌표
+	int endX5 = 312; // 흰색 코의 중심 X 좌표 (직선이 수직이므로 X 좌표는 같습니다)
+	int endY5 = 193; // 원하시는 Y 좌표로 설정
+	MoveToEx(hdc, startX5, startY5, NULL);
+	LineTo(hdc, endX5, endY5);
+
+	// 왼쪽 눈2(직선)
+	int startX6 = 323; // 흰색 코의 중심 X 좌표
+	int startY6 = 204; // 흰색 코의 중심 Y 좌표
+	int endX6 = 312; // 흰색 코의 중심 X 좌표 (직선이 수직이므로 X 좌표는 같습니다)
+	int endY6 = 215; // 원하시는 Y 좌표로 설정
+	MoveToEx(hdc, startX6, startY6, NULL);
+	LineTo(hdc, endX6, endY6);
+
+	// 오른쪽 눈1(직선)
+	int startX7 = 460; // 흰색 코의 중심 X 좌표
+	int startY7 = 204; // 흰색 코의 중심 Y 좌표
+	int endX7 = 474; // 흰색 코의 중심 X 좌표 (직선이 수직이므로 X 좌표는 같습니다)
+	int endY7 = 193; // 원하시는 Y 좌표로 설정
+	MoveToEx(hdc, startX7, startY7, NULL);
+	LineTo(hdc, endX7, endY7);
+
+	// 오른쪽 눈2(직선)
+	int startX8 = 460; // 흰색 코의 중심 X 좌표
+	int startY8 = 204; // 흰색 코의 중심 Y 좌표
+	int endX8 = 474; // 흰색 코의 중심 X 좌표 (직선이 수직이므로 X 좌표는 같습니다)
+	int endY8 = 215; // 원하시는 Y 좌표로 설정
+	MoveToEx(hdc, startX8, startY8, NULL);
+	LineTo(hdc, endX8, endY8);
+
+	// 분홍색 입 그리기
+	HBRUSH hPinkMouthBrush = CreateSolidBrush(RGB(255, 150, 255));
+	SelectObject(hdc, hPinkMouthBrush);
+	int pinkMouthRadius = 17; // 분홍색 입의 반지름
+	int pinkMouthX = 392; // 분홍색 입의 중심 X 좌표
+	int pinkMouthY = 240; // 분홍색 입의 중심 Y 좌표
+	Ellipse(hdc, pinkMouthX - pinkMouthRadius, pinkMouthY - pinkMouthRadius * 2, pinkMouthX + pinkMouthRadius, pinkMouthY + pinkMouthRadius * 2);
+	DeleteObject(hPinkMouthBrush);
+
+	// 흰색 코 그리기
+	HBRUSH hWhiteNoseBrush = CreateSolidBrush(RGB(255, 255, 255));
+	SelectObject(hdc, hWhiteNoseBrush);
+	int whiteNoseRadius = 17; // 흰색 코의 반지름
+	int whiteNoseX = 378; // 흰색 코의 중심 X 좌표
+	int whiteNoseY = 230; // 흰색 코의 중심 Y 좌표
+	Ellipse(hdc, whiteNoseX - whiteNoseRadius, whiteNoseY - whiteNoseRadius, whiteNoseX + whiteNoseRadius, whiteNoseY + whiteNoseRadius);
+	DeleteObject(hWhiteNoseBrush);
+
+	// 흰색 코2 그리기
+	HBRUSH hWhiteNoseBrush2 = CreateSolidBrush(RGB(255, 255, 255));
+	SelectObject(hdc, hWhiteNoseBrush2);
+	int whiteNoseRadius2 = 17; // 흰색 코의 반지름
+	int whiteNoseX2 = 407; // 흰색 코의 중심 X 좌표
+	int whiteNoseY2 = 230; // 흰색 코의 중심 Y 좌표
+	Ellipse(hdc, whiteNoseX2 - whiteNoseRadius2, whiteNoseY2 - whiteNoseRadius2, whiteNoseX2 + whiteNoseRadius2, whiteNoseY2 + whiteNoseRadius2);
+	DeleteObject(hWhiteNoseBrush2);
+
+
+	// 코 그리기
+	HBRUSH hBlackBrush3 = CreateSolidBrush(RGB(0, 0, 0));
+	SelectObject(hdc, hBlackBrush3);
+	int noseRadius = 13; // 코의 반지름
+	Ellipse(hdc, centerX - noseRadius, centerY - noseRadius, centerX + noseRadius, centerY + noseRadius);
+	DeleteObject(hBlackBrush3);
+
+	// 첫번쨰 수염
+	int startX1 = 373; // 흰색 코의 중심 X 좌표
+	int startY1 = 234; // 흰색 코의 중심 Y 좌표
+	int endX1 = 350; // 흰색 코의 중심 X 좌표 (직선이 수직이므로 X 좌표는 같습니다)
+	int endY1 = 243; // 원하시는 Y 좌표로 설정
+	MoveToEx(hdc, startX1, startY1, NULL);
+	LineTo(hdc, endX1, endY1);
+
+	// 두 번째 수염
+	int startX2 = 373; // 시작점 X 좌표
+	int startY2 = 228; // 시작점 Y 좌표
+	int endX2 = 350;   // 끝점 X 좌표
+	int endY2 = 220;   // 끝점 Y 좌표
+	MoveToEx(hdc, startX2, startY2, NULL);
+	LineTo(hdc, endX2, endY2);
+
+	// 세 번째 수염
+	int startX3 = 407; // 시작점 X 좌표
+	int startY3 = 234; // 시작점 Y 좌표
+	int endX3 = 430;   // 끝점 X 좌표
+	int endY3 = 243;   // 끝점 Y 좌표
+	MoveToEx(hdc, startX3, startY3, NULL);
+	LineTo(hdc, endX3, endY3);
+
+	// 네 번째 수염
+	int startX4 = 407; // 시작점 X 좌표
+	int startY4 = 228; // 시작점 Y 좌표
+	int endX4 = 430;   // 끝점 X 좌표
+	int endY4 = 220;   // 끝점 Y 좌표
+	MoveToEx(hdc, startX4, startY4, NULL);
+	LineTo(hdc, endX4, endY4);
+
+
+	ReleaseDC(hWnd, hdc);
+
+}
+
+
 void DrawRyan(HWND hWnd, HDC hdc, int left, int top, int right, int bottom) {
 
 	RECT viewRect;
