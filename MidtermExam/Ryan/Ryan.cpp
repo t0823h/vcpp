@@ -84,89 +84,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		else if (LOWORD(wParam) == 4) {
 			shapes.clear();
 			
-			RECT viewRect;
-			GetClientRect(hWnd, &viewRect);
-			int centerX = (viewRect.left + viewRect.right) / 2;
-			int centerY = (viewRect.top + viewRect.bottom) / 2;
+			int left = 1;
+			int top = 1;
+			int right = 1;
+			int bottom = 1;
+
 			HDC hdc = GetDC(hWnd);
-
-			// 노란색 원 그리기
-			HBRUSH hyellowBrush = CreateSolidBrush(RGB(255, 200, 0));
-			SelectObject(hdc, hyellowBrush);
-			int yellowRadius = 37;
-			int yellowCenterX = 330;
-			int yellowCenterY = 130 + 20;  // y좌표를 20 올림
-			Ellipse(hdc, yellowCenterX - yellowRadius, yellowCenterY - yellowRadius, yellowCenterX + yellowRadius, yellowCenterY + yellowRadius);
-			DeleteObject(hyellowBrush);
-
-			// 노란색 원 그리기
-			HBRUSH hYellowBrush2 = CreateSolidBrush(RGB(255, 200, 0));
-			SelectObject(hdc, hYellowBrush2);
-			int yellowRadius2 = 37;
-			int yellowCenterX2 = 460;
-			int yellowCenterY2 = 130 + 20;  // y좌표를 20 올림
-			Ellipse(hdc, yellowCenterX2 - yellowRadius2, yellowCenterY2 - yellowRadius2, yellowCenterX2 + yellowRadius2, yellowCenterY2 + yellowRadius2);
-			DeleteObject(hYellowBrush2);
-
-			// 얼굴
-			HBRUSH hBlueBrush = CreateSolidBrush(RGB(255, 200, 15));
-			SelectObject(hdc, hBlueBrush);
-			int radius = 100; // 원의 반지름
-			Ellipse(hdc, centerX - radius, centerY - radius + 20, centerX + radius, centerY + radius + 20);  // y좌표를 20 올림
-			DeleteObject(hBlueBrush);
-
-			// 흰색 코 그리기
-			HBRUSH hWhiteNoseBrush = CreateSolidBrush(RGB(255, 255, 255));
-			SelectObject(hdc, hWhiteNoseBrush);
-			int whiteNoseRadius = 13; // 흰색 코의 반지름
-			int whiteNoseX = 381;
-			int whiteNoseY = 230 + 20;  // y좌표를 20 올림
-			Ellipse(hdc, whiteNoseX - whiteNoseRadius, whiteNoseY - whiteNoseRadius, whiteNoseX + whiteNoseRadius, whiteNoseY + whiteNoseRadius);
-			DeleteObject(hWhiteNoseBrush);
-
-			// 흰색 코2 그리기
-			HBRUSH hWhiteNoseBrush2 = CreateSolidBrush(RGB(255, 255, 255));
-			SelectObject(hdc, hWhiteNoseBrush2);
-			int whiteNoseRadius2 = 13; // 흰색 코의 반지름
-			int whiteNoseX2 = 404;
-			int whiteNoseY2 = 230 + 20;  // y좌표를 20 올림
-			Ellipse(hdc, whiteNoseX2 - whiteNoseRadius2, whiteNoseY2 - whiteNoseRadius2, whiteNoseX2 + whiteNoseRadius2, whiteNoseY2 + whiteNoseRadius2);
-			DeleteObject(hWhiteNoseBrush2);
-
-			// 왼쪽 눈 그리기
-			HBRUSH hBlackBrush = CreateSolidBrush(RGB(0, 0, 0));
-			SelectObject(hdc, hBlackBrush);
-			int blackRadius = 6; // 검은색 원의 반지름 (작은 원)
-			int blackX = 343;
-			int blackY = 204 + 20;  // y좌표를 20 올림
-			Ellipse(hdc, blackX - blackRadius, blackY - blackRadius, blackX + blackRadius, blackY + blackRadius);
-			DeleteObject(hBlackBrush);
-
-			// 오른쪽 눈 그리기
-			HBRUSH hBlackBrush2 = CreateSolidBrush(RGB(0, 0, 0));
-			SelectObject(hdc, hBlackBrush2);
-			int blackRadius2 = 6; // 검은색 원의 반지름 (작은 원)
-			int blackX2 = 440;
-			int blackY2 = 204 + 20;  // y좌표를 20 올림
-			Ellipse(hdc, blackX2 - blackRadius2, blackY2 - blackRadius2, blackX2 + blackRadius2, blackY2 + blackRadius2);
-			DeleteObject(hBlackBrush2);
-
-			// 눈썹
-			int startX4 = 427;
-			int startY4 = 185 + 20;  // y좌표를 20 올림
-			int endX4 = 450;
-			int endY4 = 185 + 20;  // y좌표를 20 올림
-			MoveToEx(hdc, startX4, startY4, NULL);
-			LineTo(hdc, endX4, endY4);
-
-			// 눈썹
-			int startX3 = 327;
-			int startY3 = 185 + 20;  // y좌표를 20 올림
-			int endX3 = 350;
-			int endY3 = 185 + 20;  // y좌표를 20 올림
-			MoveToEx(hdc, startX3, startY3, NULL);
-			LineTo(hdc, endX3, endY3);
-
+			DrawRyan(hWnd, hdc, left, top, right, bottom);  // left, top, right, bottom에 적절한 값을 전달
 			ReleaseDC(hWnd, hdc);
 			
 		}
