@@ -64,7 +64,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 			InvalidateRect(hWnd, NULL, TRUE);
 		}
 		else if (LOWORD(wParam) == 3) {
-			shapes.clear(); // 도형 초기화
+			shapes.clear();
+			
 			SetTimer(hWnd, 1, 100, NULL); // 타이머 시작
 			if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
 				int blink = 1;
@@ -78,10 +79,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 				DrawBonobono(hWnd, hdc, blink);
 				ReleaseDC(hWnd, hdc);
 			}
-
+			
 		}
 		else if (LOWORD(wParam) == 4) {
-			shapes.clear(); // 도형 초기화
+			shapes.clear();
+			
 			RECT viewRect;
 			GetClientRect(hWnd, &viewRect);
 			int centerX = (viewRect.left + viewRect.right) / 2;
@@ -165,20 +167,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 			MoveToEx(hdc, startX3, startY3, NULL);
 			LineTo(hdc, endX3, endY3);
 
-
-
 			ReleaseDC(hWnd, hdc);
-
-
+			
 		}
 
 		else if (LOWORD(wParam) == 5) {
-
 			shapes.clear(); // 도형 데이터 초기화
+			isBoxVisible = true;
+			isCircleMode = false; // 사각형 모드로 변경
 			InvalidateRect(hWnd, NULL, TRUE);
-
 		}
-
 		break;
 	case WM_TIMER:
 		// 타이머가 발생하면 스페이스바를 누르고 있을 때 윙크하는 보노보노를 그림
@@ -197,6 +195,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 			endPoint = startPoint;
 			isMouseLButtonPressed = 1;
 		}
+
 		break;
 	case WM_MOUSEMOVE:
 		if (isMouseLButtonPressed) {

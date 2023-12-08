@@ -1,7 +1,7 @@
 #include "yuhanCG.h"
 
 void DrawBonobono(HWND hWnd, HDC hdc, int blink) {
-    
+	
 	RECT viewRect;
 	GetClientRect(hWnd, &viewRect);
 	int centerX = (viewRect.left + viewRect.right) / 2;
@@ -119,7 +119,7 @@ void DrawBonobono(HWND hWnd, HDC hdc, int blink) {
 	LineTo(hdc, endX4, endY4);
 
 	ReleaseDC(hWnd, hdc);
-
+	
 }
 
 void DrawBonobonoother(HWND hWnd, HDC hdc, int blink) {
