@@ -330,5 +330,4 @@ void DrawRyan(HWND hWnd, HDC hdc, int left, int top, int right, int bottom) {
 
 	ReleaseDC(hWnd, hdc);
 
-
 }

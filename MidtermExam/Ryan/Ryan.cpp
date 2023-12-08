@@ -94,7 +94,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 			ReleaseDC(hWnd, hdc);
 			
 		}
-
 		else if (LOWORD(wParam) == 5) {
 			shapes.clear(); // 도형 데이터 초기화
 			isBoxVisible = true;
